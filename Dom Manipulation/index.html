@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 2em;
+            height: 10em;
+        }
+        .container:nth-child(even) {
+            background-color: #beb9b9;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section class="container" id="ex1">
+        <h1>JavaScript Exercise: Change background color</h1>
+        <input type="text" id="colorPicker" />
+        <button id="changeColorBtn">Set Background Color</button>
+    </section>
+    <section class="container" id="ex2">
+        <h1>JavaScript Exercise: Toggle Visibility</h1>
+        <button id="toggleBtn">Toggle Text</button>
+        <p id="toggleText">This text can be toggled.</p>
+    </section>
+    <section class="container" id="ex3">
+        <h1>JavaScript Exercise: Counter</h1>
+        <h2>Value: <span id="counter">0</span></h2>
+        <button id="increment">Increment</button>
+        <button id="decrement">Decrement</button>
+        <button id="reset">Reset</button>
+    </section>
+    <section class="container" id="ex4">
+        <h1>JavaScript Exercise: Add input</h1>
+        <input type="text" id="newInput" />
+        <button id="addInputBtn">Add Item</button>
+        <p>OUTPUT: <span id="output"></span></p>
+    </section>
+     <section class="container" id="ex5">
+        <h1>JavaScript Exercise: Increase font size</h1>
+        <button id="fontSizeBtn">Increase font Size</button>
+    </section>
+</body>
+<script src="app.js"></script>
+</html>

@@ -5,47 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Todo app</title>
-    <style>
-        body {
-            font-family: system-ui, sans-serif;
-            max-width: 720px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .row {
-            display: flex;
-            gap: .5rem;
-        }
-
-        input,
-        button {
-            padding: .6rem;
-        }
-
-        input {
-            flex: 1;
-        }
-
-        #status {
-            opacity: .7;
-        }
-
-        li {
-            margin: .35rem 0;
-        }
-
-        .done {
-            text-decoration: line-through;
-            opacity: .7;
-            color: gray;
-        }
-
-        li:hover {
-            cursor: pointer;
-            opacity: .7;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    
 </head>
 
 <body>
@@ -61,67 +22,6 @@
     <ul id="todo-list">
         <li class="muted">Your todos will appear here…</li>
     </ul>
-    <script>
-        const todos = [
-            {
-                text: 'Learn HTML',
-                done: false
-            }
-        ];
-        console.log(todos);
-
-        const inputEl = document.querySelector('#todo-input');
-        const buttonEl = document.querySelector('#add-btn');
-        const listEl = document.querySelector('#todo-list');
-        const statusEl = document.querySelector('#status');
-
-        function render() {
-            listEl.innerHTML = "";
-            for (const todo of todos) {
-                let element = document.createElement("li");
-                element.textContent = todo.text;
-
-                if (todo.done) {
-                    element.classList.add("done");
-                }
-
-                listEl.appendChild(element);
-            }
-
-            statusEl.textContent = `Status: ${todos.length} todos`;
-        }
-        render()
-
-        function addTodo(text) {
-            text = text.trim();
-
-            if (text == "") {
-                return false;
-            }
-
-            const todo = {
-                text: text,
-                done: false
-            };
-
-            todos.push(todo);
-
-            return true;
-        }
-
-        function addTodoClicked() {
-            let todoText = inputEl.value;
-            
-            if (addTodo(todoText)) {
-                inputEl.value = "";
-                inputEl.focus();
-                render();
-            }
-        }
-
-        buttonEl.addEventListener("click", addTodoClicked);
-        
-        
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

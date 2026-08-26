@@ -1,0 +1,39 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.row {
+    display: flex;
+    gap: .5rem;
+}
+
+input,
+button {
+    padding: .6rem;
+}
+
+input {
+    flex: 1;
+}
+
+#status {
+    opacity: .7;
+}
+
+li {
+    margin: .35rem 0;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: .7;
+    color: gray;
+}
+
+li:hover {
+    cursor: pointer;
+    opacity: .7;
+}

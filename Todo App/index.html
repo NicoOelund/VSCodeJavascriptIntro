@@ -92,6 +92,26 @@
         }
         render()
 
+        function addTodo(text) {
+            text.trim();
+
+            if (text == "") {
+                return false;
+            }
+
+            const todo = {
+                text: text,
+                done: false
+            };
+
+            todos.push(text);
+
+            return true;
+        }
+
+        let todoText = inputEl.value;
+
+        addTodo(todoText);
         
     </script>
 </body>

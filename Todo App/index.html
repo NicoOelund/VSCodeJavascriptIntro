@@ -93,7 +93,7 @@
         render()
 
         function addTodo(text) {
-            text.trim();
+            text = text.trim();
 
             if (text == "") {
                 return false;
@@ -104,14 +104,23 @@
                 done: false
             };
 
-            todos.push(text);
+            todos.push(todo);
 
             return true;
         }
 
-        let todoText = inputEl.value;
+        function addTodoClicked() {
+            let todoText = inputEl.value;
+            
+            if (addTodo(todoText)) {
+                inputEl.value = "";
+                inputEl.focus();
+                render();
+            }
+        }
 
-        addTodo(todoText);
+        buttonEl.addEventListener("click", addTodoClicked);
+        
         
     </script>
 </body>

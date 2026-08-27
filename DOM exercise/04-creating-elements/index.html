@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Adding and removing elements</title>
+</head>
+<body>
+    <button id="toggleBtn" data-action="show" class="createBtn">Show profile</button>
+    <div id="instructions">
+        <h2> Instructions:</h2>
+        <ol>
+            <li>Create the following DOM elements in <code>app.js</code> in a function called <code>createProfileSection</code>:</li>
+        </ol>
+
+        <pre>
+        &lt;section id="profile-section"&gt;
+            &lt;h1&gt;Profile&lt;/h1&gt;
+            &lt;article class="profile-card"&gt;
+                &lt;img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile picture" /&gt;
+                &lt;h2&gt;John Doe&lt;/h2&gt;
+                &lt;p&gt;Web developer and coffee enthusiast.&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Location: Copenhagen&lt;/li&gt;
+                    &lt;li&gt;Favorite Language: JavaScript&lt;/li&gt;
+                    &lt;li&gt;Hobby: Cycling&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+        </pre>
+        <ol start="2">
+            <li>Add a click event listener to the button.</li>
+            <li>When clicked, toggle the visibility of the profile section:</li>
+            <ul>
+                <li>If the section is visible, hide it and change the button text to "Show profile".</li>
+                <li>If the section is hidden, show it and change the button text to "Hide profile".</li>
+            </ul>
+            
+        </ol>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>

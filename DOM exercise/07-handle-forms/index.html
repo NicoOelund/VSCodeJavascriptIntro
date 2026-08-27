@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Handling forms</title>
+</head>
+<body>
+    <main>
+        <!-- User Form -->
+        <section class="container">
+            <h1>Form</h1>
+            <form id="userForm">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="number" id="age" name="age" placeholder="Age" required>
+                <button type="submit">Add User</button>
+            </form>
+        </section>
+
+        <!-- User List -->
+        <section class="container" id="output">
+            <h2>Users</h2>
+            <p id="result"></p>
+            <ul id="userList">
+                <!-- User items will be added here -->
+            </ul>
+        </section>
+        <section id="instructions">
+            <h2>Instructions</h2>
+            <ol>
+                <li>Select the form and listen for the submit event.</li>
+                <li>Prevent the default form submission behavior, use:</li>
+                <pre>
+                    event.preventDefault();
+                </pre>
+                <li>Get the values from the name and age input fields.</li>
+                <li>Add the new user to the user list.</li>
+                <li>Clear the input fields after submission.</li>
+                <li>Update the user list.</li>
+            </ol>
+        </section>
+    </main>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

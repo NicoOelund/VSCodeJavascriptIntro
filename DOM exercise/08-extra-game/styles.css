@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+#game-info {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#game-area {
+    margin: 0 auto 20px auto;
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    background: #3498db;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+.circle:active {
+    background: #217dbb;
+}
+
+#end-message {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #e74c3c;
+}
+
+#start-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#start-btn:hover {
+    background: #27ae60;
+}

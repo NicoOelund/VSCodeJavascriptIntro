@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    position: relative;
+}
+
+section div {
+    transition: all .5s;
+}
+
+#square {
+    width: 5vw;
+    aspect-ratio: 1 / 1;
+
+    border: 3px solid green;
+    background-color: rgba(0,180,0,0.5);
+
+    position: absolute;
+    left: 10vw;
+    
+    cursor: pointer;
+}
+
+#circle {
+    width: 5vw;
+    aspect-ratio: 1 / 1;
+
+    border: 3px solid red;
+    background-color: rgba(255,0,0,0.5);
+
+    border-radius: 50%;
+
+    position: absolute;
+    left: 30vw;
+
+    cursor: pointer;
+}
+
+/* Classes to be added/removed with JS */
+
+.tilt {
+    rotate: -15deg;
+}
+
+.size {
+    scale: .5;
+}
+
+.move {
+    translate: 0 -2.5vw;
+}

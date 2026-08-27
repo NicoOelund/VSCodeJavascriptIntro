@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2em;
+    color: #333;
+}
+
+main {
+    max-width: 600px;
+    margin: 2em auto;
+    background: #fff;
+    padding: 2em 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+ol li {
+    margin: 1em 0;
+    font-size: 1.1em;
+}
+
+a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+a:hover, a:focus {
+    color: #fff;
+    background: #1976d2;
+    outline: none;
+}

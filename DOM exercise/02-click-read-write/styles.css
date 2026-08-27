@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    display: grid;
+    gap: 1em;
+    margin-bottom: 5em;
+}
+
+/* Button as large as its content */
+section button {
+    justify-self: start;
+    cursor: pointer;
+}

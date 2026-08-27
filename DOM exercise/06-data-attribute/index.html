@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Data Attribute Toggle Example</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Data Attribute</h1>
+	<button id="toggleBtn" data-state="off">Toggle Me!</button>
+	<p id="stateText">Current state: <span id="stateValue">off</span></p>
+	<script src="app.js"></script>
+	<div class="instructions">
+		<h2>Example of a data-attribute in HTML:</h2>
+		<pre><code>&lt;button data-state="off"&gt;Toggle Me!&lt;/button&gt;</code></pre>
+		<p>You can access this attribute in JavaScript using <code>element.getAttribute('data-state')</code> and <code>element.setAttribute('data-state', value)</code>.</p>
+	</div>
+</body>
+</html>

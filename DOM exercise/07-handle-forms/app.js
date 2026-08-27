@@ -22,6 +22,9 @@ window.addEventListener("DOMContentLoaded", initApp);
 function initApp() {
     // TODO: render initial users using displayUsers()
     // TODO: Add submit event listener to #userForm
+    displayUsers();
+    const form = document.querySelector("#userForm");
+    form.addEventListener("submit", handleFormSubmit);
 }
 
 function handleFormSubmit(event) {
@@ -30,14 +33,37 @@ function handleFormSubmit(event) {
     // TODO: add user using addUser()
     // TODO: display users using displayUsers()
     // TODO: clear the form
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const user = {
+        name: formData.get("name"),
+        age: Number(formData.get("age"))
+    }
+
+    addUser(user);
+    displayUsers();
+    
+    event.target.reset();
 }
 
 function displayUsers() {
     // TODO: Get all users, and clear existing list
     // TODO: Call displayUserItem for each user
+    const userList = document.querySelector("#userList");
+    while (userList.children.length != 0) {
+        userList.lastElementChild.remove();
+    }
+
+    for (const user of getUsers()) {
+        displayUserItem(user);
+    }
 }
 
 function displayUserItem(user) {
     // TODO: Create <li> for user and append to #userList
-
+    const li = document.createElement("li");
+    li.textContent = `${user.name}: ${user.age}`;
+    const userList = document.querySelector("#userList");
+    userList.appendChild(li);
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User management app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <!-- User Form -->
+        <section class="container">
+            <h1>Form</h1>
+            <form id="userForm">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="number" id="age" name="age" min="0" max="120" placeholder="Age" required>
+                <button type="submit">Add User</button>
+            </form>
+        </section>
+
+        <!-- User List -->
+        <section class="container" id="output">
+            <h2>Users</h2>
+            <p id="result"></p>
+            <ul id="userList">
+                <!-- User items will be added here -->
+            </ul>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -10,10 +10,29 @@ const feedback = document.querySelector("#feedback");
 const attemptsDisplay = document.querySelector("#attempts");
 const restartBtn = document.querySelector("#restartBtn");
 
+// extra assignment addition
+let guessList;
+let bestScore;
+
 window.addEventListener("DOMContentLoaded", initGame);
 
 // TODO
 function initGame() {
+
+    //extra assignment additions
+    createElements();
+    const savedBestScore = localStorage.getItem("bestScore");
+    if (savedBestScore !== null) {
+        bestScore.textContent = `Best attempt = ${savedBestScore} guesses!`;
+    }
+    else {
+        bestScore.textContent = "Play to save your best attempt!";
+    }
+    
+
+
+
+
 	// TODO 6: Call the `resetGame` function to initialize the game state when the page loads.
     resetGame();
 
@@ -27,12 +46,16 @@ function initGame() {
 
 // TODO
 function resetGame() {
+    //extra assignment additions
+    guessList.innerHTML = "";
+
+
     // TODO 1: Generate a random number between MIN and MAX, and store it in the `secretNumber` variable.
 	// Hint: Use `Math.random()` and `Math.floor()` to generate the random number.
-    secretNumber = Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
+    secretNumber = Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
 
 	// TODO 2: Reset the attempts counter to 0.
-    attempts = "0";
+    attempts = 0;
     
 	// TODO 3: Update the attemptsDisplay in the DOM to show the reset attempts count.
     attemptsDisplay.textContent = `Attempts = ${attempts}`;
@@ -55,7 +78,7 @@ function handleGuess(event) {
     const guess = parseInt(guessInput.value);
     
 	// TODO 9: Create a boolean variable `isBetweenRange` that checks if the guess is a valid number and within the defined range (between MIN and MAX).
-    const isBetweenRange = guess > MIN && guess < MAX;
+    const isBetweenRange = guess >= MIN && guess <= MAX;
 
 	// TODO 10: Create a boolean variable `isValidNumber` that checks if the guess is a valid number (not NaN use isNan function).
     const isValidNumber = !isNaN(guess);
@@ -79,8 +102,36 @@ function handleGuess(event) {
     else {
         feedback.textContent = `Congratulations, the correct number was ${secretNumber}!`;
         restartBtn.classList.remove("hidden");
+
+        // extra
+        const savedBestScore = localStorage.getItem("bestScore");
+
+        if (attempts < Number(savedBestScore) || savedBestScore === null) {
+            localStorage.setItem("bestScore", attempts);
+            bestScore.textContent = `Best attempt = ${attempts} guesses!`;
+        }
     }
 
 	// TODO 13: Clear the form input field (use event.target.reset() to clear the form after submission).
     event.target.reset();
+
+
+    // extra assignment
+    addGuessToList(guess);
+}
+
+// extra assignment
+function createElements() {
+    guessList = document.createElement("ul");
+    bestScore = document.createElement("p");
+    
+    const main = document.querySelector(".container");
+    main.append(guessList, bestScore);
+}
+
+// extra assignment
+function addGuessToList(guess) {
+    const li = document.createElement("li");
+    li.textContent = `Guess ${guessList.children.length + 1}: ${guess}`;
+    guessList.appendChild(li);
 }

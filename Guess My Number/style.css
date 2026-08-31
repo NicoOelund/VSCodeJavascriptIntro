@@ -78,7 +78,7 @@ button:hover {
 	color: #eab308;
 }
 
-#attempts {
+#attempts, #bestGuess {
 	color: #888;
 	font-size: 1em;
 	margin-bottom: 10px;

@@ -93,7 +93,7 @@ function handleDelete(event) {
     // TODO 17: Check if the clicked element is a delete button
     // Hint: if event.target.tagName is not equal to BUTTON
     // Return early from the function
-    if (event.target.tagName != "BUTTON") {
+    if (event.target.tagName !== "BUTTON") {
         return;
     }
 

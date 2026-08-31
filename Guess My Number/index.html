@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Guess My Number</title>
+</head>
+<body>
+	<main class="container">
+		<h1>Guess My Number!</h1>
+		<p class="instructions">I'm thinking of a number between <span id="min">1</span> and <span id="max">100</span>. Can you guess it?</p>
+		<form id="guessForm" autocomplete="off">
+			<input type="number" id="guessInput" min="1" max="100" placeholder="Enter guess" required>
+			<button type="submit">Guess</button>
+		</form>
+		<p id="feedback"></p>
+		<p id="attempts"></p>
+		<button id="restartBtn" class="hidden">Restart Game</button>
+	</main>
+	<script src="app.js"></script>
+</body>
+</html>

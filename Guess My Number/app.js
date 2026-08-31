@@ -12,7 +12,7 @@ const restartBtn = document.querySelector("#restartBtn");
 
 // extra assignment addition
 let guessList;
-let bestScore;
+let bestScoreDisplay;
 
 window.addEventListener("DOMContentLoaded", initGame);
 
@@ -23,15 +23,12 @@ function initGame() {
     createElements();
     const savedBestScore = localStorage.getItem("bestScore");
     if (savedBestScore !== null) {
-        bestScore.textContent = `Best attempt = ${savedBestScore} guesses!`;
+        bestScoreDisplay.textContent = `Best attempt = ${savedBestScore} guesses!`;
     }
     else {
-        bestScore.textContent = "Play to save your best attempt!";
+        bestScoreDisplay.textContent = "Play to save your best attempt!";
     }
     
-
-
-
 
 	// TODO 6: Call the `resetGame` function to initialize the game state when the page loads.
     resetGame();
@@ -106,9 +103,9 @@ function handleGuess(event) {
         // extra
         const savedBestScore = localStorage.getItem("bestScore");
 
-        if (attempts < Number(savedBestScore) || savedBestScore === null) {
+        if (savedBestScore === null || attempts < Number(savedBestScore)) {
             localStorage.setItem("bestScore", attempts);
-            bestScore.textContent = `Best attempt = ${attempts} guesses!`;
+            bestScoreDisplay.textContent = `Best attempt = ${attempts} guesses!`;
         }
     }
 
@@ -123,10 +120,10 @@ function handleGuess(event) {
 // extra assignment
 function createElements() {
     guessList = document.createElement("ul");
-    bestScore = document.createElement("p");
+    bestScoreDisplay = document.createElement("p");
     
     const main = document.querySelector(".container");
-    main.append(guessList, bestScore);
+    main.append(guessList, bestScoreDisplay);
 }
 
 // extra assignment

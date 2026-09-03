@@ -83,20 +83,32 @@ async function addTodo(todo) {
 async function handleFormSubmit(event) {
     event.preventDefault();
     const form = new FormData(event.target);
+    const id = form.get("id");
     const title = form.get("title");
     const userId = Number(form.get("userId"));
     const completed = form.get("completed") === "on";
 
-    const newTodo = {
+    const TodoData = {
         title,
         userId,
         completed
     };
-    const createdTodo = await addTodo(newTodo);
-    console.log("Created todo:", createdTodo);
-    renderTodoRow(createdTodo);
+
+    if (id) {
+        const updatedTodo = await updateTodo(id, TodoData);
+        console.log("Updated todo:", updatedTodo)
+        // Optionally, update the row in the table without refetching all todos
+        // You would need to find the row with the corresponding ID and update its cells
+    } 
+    else {
+        const createdTodo = await addTodo(TodoData);
+        console.log("Created todo:", createdTodo);
+        renderTodoRow(createdTodo);
+    }
+    
 
     event.target.reset();
+    document.querySelector("#todoId").value = "";
 }
 
 async function deleteTodo(id) {
@@ -123,5 +135,38 @@ async function handleTableClick(event) {
         if (response) {
             row.remove();
         }
+    } 
+    else if (action === "edit") {
+        // Populate form with existing todo data
+        const title = row.children[0].textContent;
+        const userId = row.children[1].textContent;
+        const completed = row.children[2].textContent === "Yes";
+
+        // Use .value for inputs and .checked for checkbox
+        document.querySelector("#todoId").value = id; // hidden input to store the ID of the todo being edited
+        document.querySelector("#todoTitle").value = title;
+        document.querySelector("#userId").value = userId;
+        document.querySelector("#completed").checked = completed;
+
+    }
+}
+
+async function updateTodo(id, updatedTodo) {
+    try {
+        const response = await fetch(`${BASE_URL_TODOS}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTodo)
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error!`);
+    }
+    const updatedData = await response.json();
+    return updatedData;
+    } 
+    catch (error) {
+        throw new Error(`Fetch error: ${error}`);
     }
 }

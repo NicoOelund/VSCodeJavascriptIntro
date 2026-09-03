@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 2rem;
+        }
+    </style>
+    <title>Fetch example</title>
+</head>
+
+<body>
+    <h1 class="text-center">TODO CRUD</h1>
+    <form id="todoForm">
+        <input type="hidden" id="todoId" name="id">
+        <input type="text" id="todoTitle" name="title" placeholder="Enter a todo">
+        <input type="text" id="userId" name="userId" placeholder="Enter user ID">
+        <label for="completed">Completed</label>
+        <input type="checkbox" id="completed" name="completed">
+
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="todoTableBody">
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -5,6 +5,8 @@ const BASE_URL_TODOS = "https://jsonplaceholder.typicode.com/todos";
 async function initApp() {
     const todos = await fetchTodos();
     displayTodos(todos);
+
+    document.querySelector("#todoForm").addEventListener("submit", handleFormSubmit);
 }
 
 async function fetchTodos() {
@@ -46,7 +48,7 @@ function renderTodoRow(todo) {
     const editButton = document.createElement("button");
     editButton.setAttribute("data-action", "edit");
     editButton.textContent = "Edit";
-    
+
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("data-action", "delete");
     deleteButton.textContent = "Delete";
@@ -55,4 +57,39 @@ function renderTodoRow(todo) {
     row.appendChild(buttonTd);
 
     tableBody.appendChild(row);
+}
+
+async function addTodo(todo) {
+    try {
+        const response = await fetch(`${BASE_URL_TODOS}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(todo)
+    });
+    const newTodo = await response.json();
+    return newTodo;
+    } 
+    catch (error) {
+        console.log(`Fetch error: ${error}`)    
+    }
+}
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const title = form.get("title");
+    const userId = Number(form.get("userId"));
+    const completed = form.get("completed") === "on"; 
+    
+    const newTodo = {
+        title,
+        userId,
+        completed
+    };
+    const createdTodo = await addTodo(newTodo);
+    console.log("Created todo:", createdTodo);
+
+    event.target.reset(); 
 }

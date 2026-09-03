@@ -7,6 +7,7 @@ async function initApp() {
     displayTodos(todos);
 
     document.querySelector("#todoForm").addEventListener("submit", handleFormSubmit);
+    document.querySelector("#todoTableBody").addEventListener("click", handleTableClick);
 }
 
 async function fetchTodos() {
@@ -16,8 +17,8 @@ async function fetchTodos() {
             throw new Error(`HTTP error!`);
         }
         const todos = await response.json();
-        return todos; 
-    } 
+        return todos;
+    }
     catch (error) {
         console.error(`Fetch error: ${error}`);
     }
@@ -62,17 +63,20 @@ function renderTodoRow(todo) {
 async function addTodo(todo) {
     try {
         const response = await fetch(`${BASE_URL_TODOS}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(todo)
-    });
-    const newTodo = await response.json();
-    return newTodo;
-    } 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(todo)
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error!`);
+        }
+        const newTodo = await response.json();
+        return newTodo;
+    }
     catch (error) {
-        console.log(`Fetch error: ${error}`)    
+        console.log(`Fetch error: ${error}`)
     }
 }
 
@@ -81,8 +85,8 @@ async function handleFormSubmit(event) {
     const form = new FormData(event.target);
     const title = form.get("title");
     const userId = Number(form.get("userId"));
-    const completed = form.get("completed") === "on"; 
-    
+    const completed = form.get("completed") === "on";
+
     const newTodo = {
         title,
         userId,
@@ -90,6 +94,34 @@ async function handleFormSubmit(event) {
     };
     const createdTodo = await addTodo(newTodo);
     console.log("Created todo:", createdTodo);
+    renderTodoRow(createdTodo);
 
-    event.target.reset(); 
+    event.target.reset();
+}
+
+async function deleteTodo(id) {
+    try {
+        const response = await fetch(`${BASE_URL_TODOS}/${id}`, {
+            method: "DELETE"
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error!`);
+        }
+        return true;
+    }
+    catch (error) {
+        throw new Error(`Fetch error: ${error}`);
+    }
+}
+
+async function handleTableClick(event) {
+    const action = event.target.getAttribute("data-action");
+    const row = event.target.closest("tr");
+    const id = row.getAttribute("data-id");
+    if (action === "delete") {
+        const response = await deleteTodo(id);
+        if (response) {
+            row.remove();
+        }
+    }
 }
